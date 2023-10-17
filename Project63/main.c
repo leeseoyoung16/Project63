@@ -72,26 +72,12 @@ element delete_max_heap(HeapType* h) { //삭제
 }
 
 
-
-void print_level(HeapType* h) { //레벨별 출력
-    int level = 1;
-    int count = 0;
-    for (int i = 1; i <= h->heap_size; i++) {
-        if (i == level) {
-            printf("\n[%d]: ", level);
-            level *= 2;
-        }
-        printf("%d ", h->heap[i].key);
-    }
-    printf("\n");
-}
-
 int main(void) {
     HeapType* heap = create();
     init(heap);
     int elements[] = { 34, 12, 76,59, 32, 55, 88, 26, 16, 79, 34,85,29,78,41,56,86 };
     int size_element = sizeof(elements) / sizeof(elements[0]);
-    element up_heap[sizeof(elements)] = 0;
+    element up_heap[sizeof(elements)];
 
     for (int i = 0; i < size_element; i++) {
         element e;
@@ -102,7 +88,7 @@ int main(void) {
     for (int i = 0; i < size_element; i++) {
         up_heap[i] = delete_max_heap(heap);
     }
-    for (int i = 0; i < sizeof(up_heap)/sizeof(up_heap[0]); i++) {
+    for (int i = 0; i < size_element; i++) {
         printf("%d ", up_heap[i].key);
     }
     
